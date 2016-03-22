@@ -48,7 +48,9 @@ db.view('jannahJobs/listDomains', {group: true, limit: 30}, function(dberr, res)
       for(var j = 0; j < docs.length; j++){
         pendingDocs--;
         var doc = docs[j].value;
-        processed[doc.jobDetails.targetURI] = {};
+        if(!processed[doc.jobDetails.targetURI]){
+          processed[doc.jobDetails.targetURI] = {};
+        }
         if(doc._attachments && Object.keys(doc._attachments).length){
           console.log('Storing meta data for attachments for ' + doc._id + ' domains to do: ' + pendingDomains+' docs to do: ' +pendingDocs + ' attchm to do: ' + pendingAttachments)
           var ua = useragent.parse(doc.jobDetails.userAgent);
