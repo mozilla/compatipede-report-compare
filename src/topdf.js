@@ -1,7 +1,8 @@
-var PDFDocument = require('pdfkit');
+var cradle = require('cradle');
 var fs = require('fs');
-var pdfdoc = new PDFDocument({title:"Compatipede report"});
+var PDFDocument = require('pdfkit');
 var useragent = require('useragent');
+
 
 var argv = require('yargs')
   .demand('couchdbUser')
@@ -19,9 +20,9 @@ var argv = require('yargs')
 
   .argv;
 
+var pdfdoc = new PDFDocument({title:"Compatipede report"});
 var stream = pdfdoc.pipe(fs.createWriteStream(argv.outputfile));
 
-var cradle = require('cradle');
 var connection = new(cradle.Connection)('http://localhost', argv.couchdbPort, {
     auth: { username: argv.couchdbUser, password: argv.couchdbPassword }
 });
