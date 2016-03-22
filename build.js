@@ -3,6 +3,7 @@ var path = require('path');
 
 var cpPaths = {
     'src/index.js': 'dist/index.js',
+    'src/topdf.js': 'dist/topdf.js',
     'src/static/favicon.ico': 'dist/static/favicon.ico',
     'src/static/js/ui.js': 'dist/static/js/ui.js',
     'src/static/css/style.css': 'dist/static/css/style.css',
