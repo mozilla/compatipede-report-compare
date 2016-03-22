@@ -15,10 +15,11 @@
   "dependencies": {
     "cradle": "^0.6.9",
     "jsondiffpatch": "^0.1.41",
+    "pdfkit": "latest",
     "resemblejs": "^2.2.0",
     "tldextract": "^0.0.4",
     "useragent": "^2.1.8",
-    "pdfkit": "latest"
+    "yargs": "latest"
   },
   "devDependencies": {
     "fs-extra": "^0.26.7",
