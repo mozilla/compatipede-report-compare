@@ -117,6 +117,9 @@ function startAddingAttachments(){
       this.data.loaded++;
       if(this.data.loaded === this.data.imgs.length){
         setTimeout(startAddingAttachments, 5); // Trigger another round later on..
+        if(pdfdoc.y > (pdfdoc.page.height / 3 * 2)){
+          pdfdoc.addPage();
+        }
         console.log('Will embed data for '+this.data.domain + ' (attachments left to process: ' + pendingAttachments + ')');
         this.data.imgs = this.data.imgs.sort(function(a,b){return a.variant >= b.variant});
         pdfdoc.font('Times-Roman', 16).text(this.data.domain).font('Times-Roman', 10);
