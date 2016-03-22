@@ -104,7 +104,7 @@ function startAddingAttachments(){
         this.data.imgs[this.idx].body = data.body;
         this.data.loaded++;
         if(this.data.loaded === this.data.imgs.length){
-          console.log('Will embed data for '+this.data.domain);
+          console.log('Will embed data for '+this.data.domain + ' (attachments left to process: ' + pendingAttachments + ')');
           this.data.imgs = this.data.imgs.sort(function(a,b){return a.variant >= b.variant});
           pdfdoc.font('Times-Roman', 16).text(this.data.domain).font('Times-Roman', 10);
           pdfdoc.moveDown();
@@ -121,11 +121,12 @@ function startAddingAttachments(){
           }
           // free all that memory..
           delete attachment_data[this.url];
+          delete this.data;
           if(pendingAttachments === 0){
             pdfdoc.end();
           }
         }else{
-          console.log('Not yet enough attachments loaded for ' + this.data.domain + ' ( ' + this.data.loaded + '/' + this.data.imgs.length+')');
+          console.log('Not yet enough attachments loaded for ' + this.data.domain + ' ( ' + this.data.loaded + '/' + this.data.imgs.length+')' + '(attachments left to process: ' + pendingAttachments + ')');
         }
       }.bind({data:the_data, url:the_url, idx: index}));
     });
