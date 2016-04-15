@@ -76,3 +76,6 @@ figure:focus figcaption, figure:active figcaption{
 	opacity: 1;
 	outline: 1px grey solid;
 }
+.jsondiffpatch-delta pre{
+	white-space: pre-line;
+}

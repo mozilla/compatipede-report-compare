@@ -234,7 +234,7 @@
     resemble(img1).compareTo(img2).onComplete(function(data){
       var elm = showComparison(data);
       cb(elm);
-    });
+    }).ignoreAntialiasing();
   }
 
   function showComparison(data){
