@@ -2,7 +2,7 @@ var http = require('http');
 var node_static = require('node-static');
 var url = require('url');
 
-var fileserver = new(node_static.Server)('./static/');
+var fileserver = new(node_static.Server)(__dirname + '/static/');
 
 var argv = require('yargs')
   .demand('couchdbUser')
@@ -41,7 +41,7 @@ http.createServer(function (req, http_res) {
       var connection = new(cradle.Connection)('http://localhost', 5984, {
           auth: { username: argv.couchdbUser, password: argv.couchdbPassword }
       });
-      var db = connection.database('compatipede-adhoc-jobs');
+      var db = connection.database(argv.couchdbDb);
 
       // Various GETs we need:
       // GET /   Main app HTML (linking to JS and CSS)
